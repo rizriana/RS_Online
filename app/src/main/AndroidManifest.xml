@@ -13,14 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
+        <activity android:name=".onboard.OnboardActivity"></activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name="com.belicode.rsmsonline.SplahScreen">
+        <activity android:name=".SplahScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,61 +31,60 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.belicode.rsmsonline.MainActivity"
+            android:name=".MainActivity"
             android:label="Login"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.belicode.rsmsonline.DaftarActivity"
+            android:name=".DaftarActivity"
             android:label="Daftar" />
-        <activity android:name="com.belicode.rsmsonline.HomeActivity" />
+        <activity android:name=".HomeActivity" />
         <activity
-            android:name="com.belicode.rsmsonline.MainMenuActivity"
+            android:name=".MainMenuActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.belicode.rsmsonline.ListAnggotaKeluarga"
+            android:name=".ListAnggotaKeluarga"
             android:label="Data Keluarga" />
         <activity
-            android:name="com.belicode.rsmsonline.InputPasienActivity"
+            android:name=".InputPasienActivity"
             android:label="Input Pasien" />
         <activity
-            android:name="com.belicode.rsmsonline.ListKlinik"
+            android:name=".ListKlinik"
             android:label="Data Klinik" />
         <activity
-            android:name="com.belicode.rsmsonline.PilihPasienActivity"
+            android:name=".PilihPasienActivity"
             android:label="Pilih Pasien" />
         <activity
-            android:name="com.belicode.rsmsonline.PilihKlik"
+            android:name=".PilihKlik"
             android:label="Pilih Klinik" />
         <activity
-            android:name="com.belicode.rsmsonline.InfoAntrian"
+            android:name=".InfoAntrian"
             android:label="Info Antrian" />
-        <activity android:name="com.belicode.rsmsonline.VerifikasiPasien" />
+        <activity android:name=".VerifikasiPasien" />
         <activity
-            android:name="com.belicode.rsmsonline.DetailAntrian"
+            android:name=".DetailAntrian"
             android:label="Detail Antrian" />
         <activity
-            android:name="com.belicode.rsmsonline.VerifikasiAkun"
+            android:name=".VerifikasiAkun"
             android:label="Verifikasi" />
         <activity
-            android:name="com.belicode.rsmsonline.DetailKlinik"
+            android:name=".DetailKlinik"
             android:label="Detail Klinik" />
         <activity
-            android:name="com.belicode.rsmsonline.Bantuan"
+            android:name=".Bantuan"
             android:label="Bantuan" />
         <activity
-            android:name="com.belicode.rsmsonline.TentangApp"
+            android:name=".TentangApp"
             android:label="Tentang" />
         <activity
-            android:name="com.belicode.rsmsonline.Akun"
+            android:name=".Akun"
             android:label="Update Akun" />
         <activity
-            android:name="com.belicode.rsmsonline.PilikKlik2"
+            android:name=".PilikKlik2"
             android:label="Pilih Klinik" />
         <activity
             android:name=".PanduanActivity"
             android:label="Panduan" />
-
     </application>
 
 </manifest>

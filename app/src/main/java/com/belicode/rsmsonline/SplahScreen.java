@@ -7,6 +7,8 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.belicode.rsmsonline.onboard.OnboardActivity;
+
 public class SplahScreen extends AppCompatActivity {
 
     @Override
@@ -20,7 +22,7 @@ public class SplahScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplahScreen.this, MainActivity.class));
+                startActivity(new Intent(SplahScreen.this, OnboardActivity.class));
                 overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 finish();
             }
