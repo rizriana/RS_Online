@@ -16,7 +16,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="32dp"
             android:contentDescription="@string/register_logo"
-            android:src="@drawable/ic_medic_register"
+            android:src="@drawable/vc_medic_register"
             app:layout_constraintBottom_toTopOf="@id/tvWelcomeRegister"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

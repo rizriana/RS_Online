@@ -171,10 +171,10 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
         List<Fragment> fragments = new ArrayList<>();
 
         //link image
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/19/85531617/85531617_17b56894-2608-4509-a4f4-ad86aa5d3b62.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/19/85531617/85531617_7da28e4c-a14f-4c10-8fec-845578f7d748.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/18/85531617/85531617_87a351f9-b040-4d90-99f4-3f3e846cd7ef.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/20/85531617/85531617_03e76141-3faf-45b3-8bcd-fc0962836db3.jpg"));
+        fragments.add(FragmentSlider.newInstance("https://raw.githubusercontent.com/AnanditaRian19/RSMS_Online/master/ss1.png?token=APSU34RCMDFKNNXXRZ2PTC27ULP44"));
+        fragments.add(FragmentSlider.newInstance("https://raw.githubusercontent.com/AnanditaRian19/RSMS_Online/master/ss22.png?token=APSU34VJ2W5P4WALR6MMDF27ULRCA"));
+        fragments.add(FragmentSlider.newInstance("https://raw.githubusercontent.com/AnanditaRian19/RSMS_Online/master/ss3.png?token=APSU34VO572GWHROL52U7MC7ULQLG"));
+        fragments.add(FragmentSlider.newInstance("https://raw.githubusercontent.com/AnanditaRian19/RSMS_Online/master/ss4.png?token=APSU34RXBD2PISVH4XWO2C27ULSMU"));
 
         mAdapter = new SliderPagerAdapter(getSupportFragmentManager(), fragments);
         bannerSlider.setAdapter(mAdapter);
