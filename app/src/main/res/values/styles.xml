@@ -13,9 +13,7 @@
     </style>
 
     <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
-        <item name="colorAccent">@color/white</item>
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="colorAccent">@color/rain</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

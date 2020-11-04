@@ -14,9 +14,6 @@
     <string name="panduan6">Kemudian pilih klinik yang ingin dituju</string>
     <string name="panduan7">Setelah pendaftaran selesai silakan tekan Informasi Antrian</string>
     <string name="panduan8">Makan akan muncul informasi antrian saat ini dan nomor antrian anda beserta estimasi jam pelayanan</string>
-    <string name="banner">ca-app-pub-6825386221252111/1111111111</string>
-    <string name="app_id">ca-app-pub-6825386221252111~1111111111</string>
-    <string name="intersial">ca-app-pub-6825386221252111/1111111111</string>
     <string name="register">Register</string>
 
     <!--    Logo-->
@@ -33,7 +30,7 @@
     <string name="password">Password</string>
 
     <!--    Toast / Form Error-->
-    <string name="toast_not_empty">Field Ini Wajib di Isi</string>
+    <string name="toast_not_empty">Form Ini Wajib di Isi</string>
     <string name="email_not_valid">Pastikan Email Sudah Benar</string>
     <string name="error_toast_login">Terjadi Kesalahan Server</string>
     <string name="digit_nik">NIK Harus 16 Digit</string>
@@ -59,7 +56,7 @@
     <string name="in_development">Dalam Pengembangan</string>
     <string name="register_success">Pendaftaran Berhasil</string>
     <string name="connection_on">Pastikan Tersedia Koneksi Internet</string>
-    <string name="email_duplicated">Email Sudah Digunakan</string>
+    <string name="email_duplicated">Email Telah Digunakan Sebelumnya</string>
 
     <!--    Image Button-->
     <string name="google_logo">Google Logo</string>
@@ -70,4 +67,5 @@
     <string name="get_started">Mulai</string>
     <string name="skip">Lewati</string>
     <string name="next">Lanjut</string>
+    <string name="loading_progress_dialog">Silahkan Tunggu...</string>
 </resources>

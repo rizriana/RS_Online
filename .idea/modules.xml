@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RSMSOnline_-_Copy.iml" filepath="$PROJECT_DIR$/.idea/modules/RSMSOnline_-_Copy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RSMSOnline_-_Copy.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RSMSOnline_-_Copy.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RS_Online.iml" filepath="$PROJECT_DIR$/.idea/modules/RS_Online.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RS_Online.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RS_Online.app.iml" />
     </modules>
   </component>
 </project>
