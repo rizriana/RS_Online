@@ -64,7 +64,7 @@ public class KlinikAdapter extends BaseAdapter {
         final KlinikAdapter.ViewHolder holder;
         if(convertView == null) {
 
-            convertView = inflater.inflate(R.layout.template_list,null);
+            convertView = inflater.inflate(R.layout.listview,null);
             holder = new KlinikAdapter.ViewHolder();
 
             holder._judul = (TextView) convertView.findViewById(R.id.tv1);

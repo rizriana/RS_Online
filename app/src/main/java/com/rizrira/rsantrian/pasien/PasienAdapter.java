@@ -16,11 +16,13 @@ import com.rizrira.rsantrian.R;
 import java.util.List;
 
 public class PasienAdapter extends BaseAdapter {
+
     private Context context;
     private List<Pasien> pList;
     private LayoutInflater inflater = null;
-    private LruCache<Integer,Bitmap> imageCache;
+    private LruCache<Integer, Bitmap> imageCache;
     private RequestQueue queue;
+
     public PasienAdapter(Context context, List<Pasien> list) {
         this.context = context;
         this.pList = list;
@@ -32,12 +34,9 @@ public class PasienAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-
         TextView _judul;
         TextView _detail;
         TextView _tgl;
-        // ImageView _P_Image;
-
     }
 
     @Override
@@ -58,30 +57,24 @@ public class PasienAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-
-
         final Pasien p = pList.get(position);
         final ViewHolder holder;
-        if(convertView == null) {
+        if (convertView == null) {
 
-            convertView = inflater.inflate(R.layout.template_list,null);
+            convertView = inflater.inflate(R.layout.listview, null);
             holder = new ViewHolder();
 
             holder._judul = (TextView) convertView.findViewById(R.id.tv1);
             holder._detail = (TextView) convertView.findViewById(R.id.tv2);
-
-
-
             convertView.setTag(holder);
-        }
-        else {
+        } else {
 
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder._judul.setText(""+p.getId_pasien().toString());
-        holder._detail.setText("Nama : "+p.getNama_pasien().toString());
+        holder._judul.setText("" + p.getId_pasien().toString());
+        holder._detail.setText(p.getNama_pasien());
 
-       return convertView;
+        return convertView;
     }
 }

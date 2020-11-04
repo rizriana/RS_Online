@@ -2,11 +2,14 @@ package com.rizrira.rsantrian;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,66 +24,62 @@ import com.rizrira.rsantrian.pdModel.pdModel;
 import java.util.List;
 
 
+public class ListAnggotaKeluarga extends AppCompatActivity {
 
-public class ListAnggotaKeluarga extends AppCompatActivity implements ListView.OnItemClickListener {
-    List<Pasien> pList;
-    ListView lv;
-    TextView tvemail;
+    private List<Pasien> pList;
+    private ListView lv;
+    private TextView tvemail;
 
+    private ImageButton ibBackButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listip);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        tvemail=(TextView)findViewById(R.id.tvemailuser);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(null);
+        }
 
-        Intent intent=getIntent();
+        tvemail = findViewById(R.id.tvemailuser);
+        lv = findViewById(R.id.myList);
+        ibBackButton = findViewById(R.id.ibBackButton);
+        ibBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        Intent intent = getIntent();
         tvemail.setText(intent.getStringExtra("id_user2"));
-        lv = (ListView) findViewById(R.id.myList);
-        lv.setOnItemClickListener(this);
-        requestData( ConfigApp.SERVERAPP+"listkeluarga.php?id_user="+tvemail.getText().toString());
+        getDataKeluarga(ConfigApp.SERVERAPP + "listkeluarga.php?id_user=" + tvemail.getText().toString());
         pdModel.pdData(ListAnggotaKeluarga.this);
 
     }
-    public void requestData(String uri) {
 
+    public void getDataKeluarga(String uri) {
         StringRequest request = new StringRequest(uri,
-
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        pList = PasienJSON.parseData(response);
-                        PasienAdapter adapter = new PasienAdapter(ListAnggotaKeluarga.this, pList);
-                        lv.setAdapter(adapter);
-                        pdModel.hideProgressDialog();
-
-                    }
+                response -> {
+                    pList = PasienJSON.parseData(response);
+                    PasienAdapter adapter = new PasienAdapter(ListAnggotaKeluarga.this, pList);
+                    lv.setAdapter(adapter);
+                    pdModel.hideProgressDialog();
                 },
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        //    Toast.makeText(PengumumanActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                        pdModel.hideProgressDialog();
-                    }
+                error -> {
+                    Toast.makeText(ListAnggotaKeluarga.this, getString(R.string.error_toast_login), Toast.LENGTH_SHORT).show();
+                    pdModel.hideProgressDialog();
                 });
-
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(request);
     }
 
-
-
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
-
-
-
-
 }

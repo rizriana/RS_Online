@@ -56,20 +56,14 @@ public class RegisterActivity extends AppCompatActivity {
         pdModel.pdData(RegisterActivity.this);
         String url = ConfigApp.SERVERAPP + "registrasi_user.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String s) {
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                        Toast.makeText(RegisterActivity.this, getString(R.string.register_success), Toast.LENGTH_LONG).show();
-                        pdModel.hideProgressDialog();
-                    }
+                s -> {
+                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                    Toast.makeText(RegisterActivity.this, getString(R.string.register_success), Toast.LENGTH_LONG).show();
+                    pdModel.hideProgressDialog();
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(RegisterActivity.this, getString(R.string.connection_on), Toast.LENGTH_LONG).show();
-                        pdModel.hideProgressDialog();
-                    }
+                volleyError -> {
+                    Toast.makeText(RegisterActivity.this, getString(R.string.connection_on), Toast.LENGTH_LONG).show();
+                    pdModel.hideProgressDialog();
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -120,12 +114,9 @@ public class RegisterActivity extends AppCompatActivity {
                 pdModel.hideProgressDialog();
             }
         },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegisterActivity.this, getString(R.string.connection_on), Toast.LENGTH_LONG).show();
-                        pdModel.hideProgressDialog();
-                    }
+                error -> {
+                    Toast.makeText(RegisterActivity.this, getString(R.string.connection_on), Toast.LENGTH_LONG).show();
+                    pdModel.hideProgressDialog();
                 });
         RequestQueue requestQueue2 = Volley.newRequestQueue(RegisterActivity.this);
         requestQueue2.add(stringRequest2);
@@ -215,19 +206,11 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void initButtonListener() {
-        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                formRegisterValidation();
-            }
-        });
+        binding.btnRegister.setOnClickListener(v -> formRegisterValidation());
 
-        binding.tvRegisterAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
+        binding.tvRegisterAccount.setOnClickListener(v -> {
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
     }
 

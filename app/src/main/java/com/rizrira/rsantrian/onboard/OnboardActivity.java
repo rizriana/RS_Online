@@ -3,6 +3,7 @@ package com.rizrira.rsantrian.onboard;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.rizrira.rsantrian.ui.login.LoginActivity;
 import com.rizrira.rsantrian.R;
 import com.google.android.material.tabs.TabLayout;
+import com.rizrira.rsantrian.ui.splash.SplahScreen;
 
 import java.util.ArrayList;
 import java.util.List;

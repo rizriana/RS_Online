@@ -19,7 +19,7 @@
         <menu>
             <item
                 android:id="@+id/nav_akun"
-                 android:title="Akun" />
+                android:title="Akun" />
             <item
                 android:id="@+id/nav_logout"
                 android:title="Logout" />

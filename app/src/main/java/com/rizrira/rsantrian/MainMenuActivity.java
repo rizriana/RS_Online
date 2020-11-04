@@ -1,49 +1,56 @@
 package com.rizrira.rsantrian;
 
 import android.annotation.SuppressLint;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.appcompat.app.AlertDialog;
-
-import android.view.View;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationView;
+import com.rizrira.rsantrian.slider.BannerSlider;
+import com.rizrira.rsantrian.slider.FragmentSlider;
+import com.rizrira.rsantrian.slider.SliderIndicator;
+import com.rizrira.rsantrian.slider.SliderPagerAdapter;
 import com.rizrira.rsantrian.pdModel.pdModel;
+import com.rizrira.rsantrian.ui.login.LoginActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView tviduser, tvnamauser, tvemailuser, tvnomortelp;
     LinearLayout lv_anggotakeluarga, lv_pendaftaran, lv_klinik, lv_infoantrian;
+
     private static final String PREFS_NAME = "preferences";
     private static final String PREF_UNAME = "Username";
     private static final String PREF_NO = "Password";
@@ -58,12 +65,27 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
+    private SliderPagerAdapter mAdapter;
+    private SliderIndicator mIndicator;
+
+    private BannerSlider bannerSlider;
+    private LinearLayout mLinearLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        bannerSlider = findViewById(R.id.sliderView);
+        mLinearLayout = findViewById(R.id.pagesContainer);
+        setupSlider();
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(null);
+            getSupportActionBar().setElevation(0);
+        }
 
         lv_anggotakeluarga = (LinearLayout) findViewById(R.id.view_anggotakeluarga);
         lv_pendaftaran = (LinearLayout) findViewById(R.id.view_pendaftaran);
@@ -78,8 +100,8 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View hView = navigationView.getHeaderView(0);
-        LinearLayout linearLayout = (LinearLayout) hView.findViewById(R.id.lnav);
-        AnimationDrawable animationDrawable2 = (AnimationDrawable) linearLayout.getBackground();
+        ConstraintLayout container = hView.findViewById(R.id.lnav);
+        AnimationDrawable animationDrawable2 = (AnimationDrawable) container.getBackground();
         animationDrawable2.setEnterFadeDuration(2000);
         animationDrawable2.setExitFadeDuration(4000);
         animationDrawable2.start();
@@ -96,8 +118,7 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
                 Intent intent1 = new Intent(MainMenuActivity.this, ListAnggotaKeluarga.class);
                 intent1.putExtra("id_user2", tviduser.getText().toString());
                 startActivity(intent1);
-
-
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
         lv_pendaftaran.setOnClickListener(new View.OnClickListener() {
@@ -143,15 +164,23 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
 
             }
         });
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent1 = new Intent(MainMenuActivity.this, HubungiKami.class);
-//                startActivity(intent1);
-                Toast.makeText(MainMenuActivity.this, "tes", Toast.LENGTH_SHORT).show();
-            }
-        });
+    }
+
+    private void setupSlider() {
+        bannerSlider.setDurationScroll(800);
+        List<Fragment> fragments = new ArrayList<>();
+
+        //link image
+        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/19/85531617/85531617_17b56894-2608-4509-a4f4-ad86aa5d3b62.jpg"));
+        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/19/85531617/85531617_7da28e4c-a14f-4c10-8fec-845578f7d748.jpg"));
+        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/18/85531617/85531617_87a351f9-b040-4d90-99f4-3f3e846cd7ef.jpg"));
+        fragments.add(FragmentSlider.newInstance("https://ecs7.tokopedia.net/img/banner/2020/4/20/85531617/85531617_03e76141-3faf-45b3-8bcd-fc0962836db3.jpg"));
+
+        mAdapter = new SliderPagerAdapter(getSupportFragmentManager(), fragments);
+        bannerSlider.setAdapter(mAdapter);
+        mIndicator = new SliderIndicator(this, mLinearLayout, bannerSlider, R.drawable.indicator_circle);
+        mIndicator.setPageCount(fragments.size());
+        mIndicator.show();
     }
 
     @Override
@@ -167,7 +196,28 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        if (searchManager != null) {
+            SearchView searchView = (SearchView) (menu.findItem(R.id.action_search)).getActionView();
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            searchView.setQueryHint(getString(R.string.search_hint));
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Toast.makeText(MainMenuActivity.this, query, Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    return false;
+                }
+            });
+        }
         return true;
     }
 
@@ -191,7 +241,11 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_profile) {
+            Intent intent = new Intent(MainMenuActivity.this, Akun.class);
+            intent.putExtra("id_akun", tviduser.getText().toString());
+            startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             return true;
         }
 
@@ -203,19 +257,15 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_bantuan) {
-
             Intent intent = new Intent(MainMenuActivity.this, Bantuan.class);
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_akun) {
-
             Intent intent = new Intent(MainMenuActivity.this, Akun.class);
             intent.putExtra("id_akun", tviduser.getText().toString());
             startActivity(intent);
         } else if (id == R.id.nav_logout) {
-
             new AlertDialog.Builder(MainMenuActivity.this)
                     .setMessage("Keluar ?")
                     .setTitle("Anda akan keluar dari Aplikasi antrian")
@@ -223,12 +273,10 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
                     .setPositiveButton("Keluar", new DialogInterface.OnClickListener() {
                         @SuppressLint("NewApi")
                         public void onClick(DialogInterface dialog, int id) {
-                            finish();
-
-                            //lm.clearTestProviderLocation(provider);
+//                            finish();
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         }
                     })
-
                     .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
                         @SuppressLint("NewApi")
                         @Override
@@ -236,15 +284,8 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
                             dialog.cancel();
                         }
                     })
-
                     .show();
         }
-       /* }else if (id==R.id.nav_verifikasi){
-            Intent intent222 =new Intent(MainMenuActivity.this,PilihVerifikasi.class);
-            intent222.putExtra("id_user", tviduser.getText().toString());
-            startActivity(intent222);
-        }
-*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -259,8 +300,6 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
                 String nama = "";
                 String id_user = "";
                 String no_telp = "";
-
-
                 try {
                     JSONObject jsonObject = new JSONObject(response2);
                     JSONArray result = jsonObject.getJSONArray("profile");
@@ -268,8 +307,6 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
                     nama = collegeData.getString("nama_user");
                     id_user = collegeData.getString("id_user");
                     no_telp = collegeData.getString("no_telp");
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -277,19 +314,12 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
                 tviduser.setText(id_user);
                 tvnomortelp.setText(no_telp);
                 pdModel.hideProgressDialog();
-
-
             }
         },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainMenuActivity.this, "Not Connections", Toast.LENGTH_LONG).show();
-                        pdModel.hideProgressDialog();
-
-                    }
+                error -> {
+                    Toast.makeText(MainMenuActivity.this, getString(R.string.error_toast_login), Toast.LENGTH_LONG).show();
+                    pdModel.hideProgressDialog();
                 });
-
         RequestQueue requestQueue2 = Volley.newRequestQueue(MainMenuActivity.this);
         requestQueue2.add(stringRequest2);
     }

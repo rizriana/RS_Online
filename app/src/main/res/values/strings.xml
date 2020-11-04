@@ -67,5 +67,19 @@
     <string name="get_started">Mulai</string>
     <string name="skip">Lewati</string>
     <string name="next">Lanjut</string>
-    <string name="loading_progress_dialog">Silahkan Tunggu...</string>
+    <string name="loading_progress_dialog">Silahkan Tunggu…</string>
+    <string name="username">Username</string>
+    <string name="email_user">rizkianandita6@gmail.com</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Cari</string>
+    <string name="Patient_name">Nama Pasien</string>
+    <string name="id_pasien">Id Pasien</string>
+    <string name="anggota_keluarga">Anggota Keluarga</string>
+    <string name="back_button">Back Button</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image_banner">Image Banner</string>
+    <string name="no_internet">No Internet</string>
+
 </resources>

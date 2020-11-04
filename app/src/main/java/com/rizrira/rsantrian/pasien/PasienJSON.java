@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PasienJSON {
+
     static List<Pasien> pList;
 
     public static List<Pasien> parseData(String content) {
-
         JSONArray p_arry = null;
         Pasien p = null;
         try {
-
             p_arry = new JSONArray(content);
             pList = new ArrayList<>();
 
@@ -29,7 +28,6 @@ public class PasienJSON {
                 pList.add(p);
             }
             return pList;
-
         }
         catch (JSONException ex) {
             ex.printStackTrace();

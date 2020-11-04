@@ -19,4 +19,6 @@
     <color name="intro_title_color">#000000</color>
     <color name="intro_desc_color">#656565</color>
 
+    <color name="shimmer">#dddddd</color>
+
 </resources>

@@ -140,7 +140,7 @@ public class InfoAntrian extends AppCompatActivity implements ListView.OnItemCli
     }
 
     public void getNomor() {
-        String url = ConfigApp.SERVERAPP + "getnomor.php?id_user=" ;
+        String url = ConfigApp.SERVERAPP + "getnomor.php?id_user=";
         StringRequest stringRequest2 = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response2) {

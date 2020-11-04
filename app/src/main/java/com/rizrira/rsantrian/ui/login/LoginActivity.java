@@ -1,13 +1,20 @@
 package com.rizrira.rsantrian.ui.login;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void setUserLogin() {
         pdModel.pdLogin(LoginActivity.this);
-//        loadingDialog.startLoading();
         String url = ConfigApp.SERVERAPP + "loginuser.php";
         StringRequest stringRequest2 = new StringRequest(url + "?email_user=" + binding.edtEmail.getText().toString().trim() + "&password=" + binding.edtPassword.getText().toString().trim(), new Response.Listener<String>() {
             @Override
@@ -93,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                     startActivity(intent);
                     pdModel.hideProgressDialog();
-//                    loadingDialog.dismissDialog();
                 } else {
                     Toast.makeText(LoginActivity.this, getString(R.string.connection_on), Toast.LENGTH_LONG).show();
                     pdModel.hideProgressDialog();
@@ -101,12 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(LoginActivity.this, getString(R.string.error_toast_login), Toast.LENGTH_LONG).show();
-                        pdModel.hideProgressDialog();
-                    }
+                error -> {
+                    Toast.makeText(LoginActivity.this, getString(R.string.error_toast_login), Toast.LENGTH_LONG).show();
+                    pdModel.hideProgressDialog();
                 });
         RequestQueue requestQueue2 = Volley.newRequestQueue(LoginActivity.this);
         requestQueue2.add(stringRequest2);
@@ -167,40 +168,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initCLickListener() {
-        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                formLoginValidation();
-            }
-        });
+        binding.btnLogin.setOnClickListener(v -> formLoginValidation());
 
-        binding.tvForgotPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, getString(R.string.in_development), Toast.LENGTH_SHORT).show();
-            }
-        });
+        binding.tvForgotPass.setOnClickListener(v -> Toast.makeText(LoginActivity.this, getString(R.string.in_development), Toast.LENGTH_SHORT).show());
 
-        binding.ivLoginGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, getString(R.string.in_development), Toast.LENGTH_SHORT).show();
-            }
-        });
+        binding.ivLoginGoogle.setOnClickListener(v -> Toast.makeText(LoginActivity.this, getString(R.string.in_development), Toast.LENGTH_SHORT).show());
 
-        binding.ivLoginFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, getString(R.string.in_development), Toast.LENGTH_SHORT).show();
-            }
-        });
+        binding.ivLoginFacebook.setOnClickListener(v -> Toast.makeText(LoginActivity.this, getString(R.string.in_development), Toast.LENGTH_SHORT).show());
 
-        binding.tvRegisterNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
+        binding.tvRegisterNow.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
     }
 
