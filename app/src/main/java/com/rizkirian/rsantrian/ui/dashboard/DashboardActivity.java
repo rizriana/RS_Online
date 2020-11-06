@@ -41,7 +41,7 @@ import com.rizkirian.rsantrian.network.Consts;
 import com.rizkirian.rsantrian.ui.info_antrian.InfoAntrianActivity;
 import com.rizkirian.rsantrian.InputPasienActivity;
 import com.rizkirian.rsantrian.ListAnggotaKeluarga;
-import com.rizkirian.rsantrian.ListKlinik;
+import com.rizkirian.rsantrian.ui.list_klinik.ListKlinikActivity;
 import com.rizkirian.rsantrian.PilihPasienActivity;
 import com.rizkirian.rsantrian.R;
 import com.rizkirian.rsantrian.pdModel.pdModel;
@@ -165,8 +165,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         // Button Jadwal Klinik
         cvJadwalKlinik.setOnClickListener(view -> {
-            Intent intent1 = new Intent(DashboardActivity.this, ListKlinik.class);
+            Intent intent1 = new Intent(DashboardActivity.this, ListKlinikActivity.class);
             startActivity(intent1);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
         });
 

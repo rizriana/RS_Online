@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -117,16 +118,16 @@ public class InfoAntrianActivity extends AppCompatActivity implements ListView.O
     }
 
     public void requestData(String uri) {
-        StringRequest request = new StringRequest(uri,
-                response -> {
-//                    pList = AntrianJSON.parseData(response);
-//                    AntrianAdapter adapter = new AntrianAdapter(InfoAntrianActivity.this, pList);
-//                    lv.setAdapter(adapter);
-                    list = AntrianJSON.parseData(response);
-                    recycler = new AntrianAdapter(list, this);
-                    rv.setAdapter(recycler);
-                    animContainer.setVisibility(View.GONE);
-                },
+        StringRequest request = new StringRequest(uri, response -> {
+            try {
+                list = AntrianJSON.parseData(response);
+                recycler = new AntrianAdapter(list, InfoAntrianActivity.this);
+                rv.setAdapter(recycler);
+                animContainer.setVisibility(View.GONE);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        },
                 error -> Toast.makeText(InfoAntrianActivity.this, getString(R.string.error_toast_login), Toast.LENGTH_SHORT).show());
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(request);

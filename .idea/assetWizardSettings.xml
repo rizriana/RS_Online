@@ -321,9 +321,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_add_circle" />
-                            <entry key="sourceFile" value="C:\Users\rizki\Desktop\vc_home.svg" />
+                            <entry key="outputName" value="vc_no_queue" />
+                            <entry key="sourceFile" value="C:\Users\rizki\Desktop\vc_no_queue.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -13,7 +13,8 @@ import java.util.List;
  */
 
 public class AntrianJSON {
-    static List<Antrian> pList;
+
+    private static List<Antrian> pList;
 
     public static List<Antrian> parseData(String content) {
         JSONArray p_arry = null;

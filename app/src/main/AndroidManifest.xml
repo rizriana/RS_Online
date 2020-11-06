@@ -50,7 +50,7 @@
             android:name="com.rizkirian.rsantrian.InputPasienActivity"
             android:label="Input Pasien" />
         <activity
-            android:name="com.rizkirian.rsantrian.ListKlinik"
+            android:name="com.rizkirian.rsantrian.ui.list_klinik.ListKlinikActivity"
             android:label="Data Klinik" />
         <activity
             android:name="com.rizkirian.rsantrian.PilihPasienActivity"
@@ -69,7 +69,7 @@
             android:name="com.rizkirian.rsantrian.VerifikasiAkun"
             android:label="Verifikasi" />
         <activity
-            android:name="com.rizkirian.rsantrian.DetailKlinik"
+            android:name="com.rizkirian.rsantrian.ui.detail_klinik.DetailKlinikActivity"
             android:label="Detail Klinik" />
         <activity
             android:name="com.rizkirian.rsantrian.ui.panduan.BantuanActivity"
