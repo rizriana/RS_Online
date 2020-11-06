@@ -12,6 +12,18 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="navigationDrawer">
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="ImageDashboard">
+        <item name="android:layout_width">@dimen/bg_image_dashboard</item>
+        <item name="android:layout_height">@dimen/bg_image_dashboard</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
     <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
         <item name="colorAccent">@color/rain</item>
     </style>
@@ -21,12 +33,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="colorPrimary">@color/shimmer</item>
         <item name="elevation">0dp</item>
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="elevation">2dp</item>
     </style>
 

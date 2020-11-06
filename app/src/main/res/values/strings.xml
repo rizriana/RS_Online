@@ -33,9 +33,11 @@
     <string name="toast_not_empty">Form Ini Wajib di Isi</string>
     <string name="email_not_valid">Pastikan Email Sudah Benar</string>
     <string name="error_toast_login">Terjadi Kesalahan Server</string>
+    <string name="update_profil">Profil Berhasil Diperbaharui</string>
     <string name="digit_nik">NIK Harus 16 Digit</string>
     <string name="digit_phone">Pastikan Nomor Hp Sudah Benar</string>
     <string name="digit_password">Password Minimal 6 Digit</string>
+    <string name="password_same">Pastikan Password Sudah Sama</string>
 
     <!--    Login / Register-->
     <string name="login">Masuk</string>
@@ -50,7 +52,6 @@
     <string name="text_login">Masuk untuk mengambil antrian pasien</string>
     <string name="text_register">Lengkapi form untuk pendaftaran pengguna</string>
     <string name="form_pendaftaran">Form Daftar Akun</string>
-
 
     <!--    Toast-->
     <string name="in_development">Dalam Pengembangan</string>
@@ -75,7 +76,7 @@
     <string name="search_hint">Cari</string>
     <string name="Patient_name">Nama Pasien</string>
     <string name="id_pasien">Id Pasien</string>
-    <string name="anggota_keluarga">Anggota Keluarga</string>
+    <string name="pasien_terdaftar">Pasien Terdaftar</string>
     <string name="back_button">Back Button</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="image_banner">Image Banner</string>

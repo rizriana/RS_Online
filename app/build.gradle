@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.rizkira.rsantrian"
+        applicationId "com.rizkirian.rsantrian"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -44,4 +44,5 @@ dependencies {
     implementation 'com.tomer:fadingtextview:2.6'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

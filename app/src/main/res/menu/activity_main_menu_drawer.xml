@@ -3,26 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-
-    <item android:title="TENTANG DAN DUKUNGAN">
+    <item android:title="Dukungan">
         <menu>
             <item
                 android:id="@+id/nav_bantuan"
-                android:title="Bantuan" />
+                android:icon="@drawable/ic_help"
+                android:title="Panduan" />
             <item
                 android:id="@+id/nav_tentang"
+                android:icon="@drawable/ic_about"
                 android:title="Tentang Aplikasi" />
         </menu>
     </item>
 
-    <item android:title="AKUN">
+    <item android:title="Akun">
         <menu>
             <item
                 android:id="@+id/nav_akun"
-                android:title="Akun" />
+                android:icon="@drawable/ic_person"
+                android:title="Profil Pengguna" />
             <item
                 android:id="@+id/nav_logout"
-                android:title="Logout" />
+                android:icon="@drawable/ic_logout"
+                android:title="Keluar" />
         </menu>
     </item>
 </menu>
